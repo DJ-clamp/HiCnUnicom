@@ -1,4 +1,4 @@
-> 中国联通APP登录 签到 金币 任务 解流量封顶  
+> 登录 签到 会员任务  
 新增使用github自动运行，无需自己的服务器
 ## 使用方法
 
@@ -19,12 +19,16 @@
 | ~~hfgoactive~~ |   加入这个表示会运行话费购活动，但境外ip貌似不能联通，所以不添加|
 | `12345678901@112233` |   为 11位手机号码@6位服务密码，有多个手机号则依次添加即可|
 | `appId@xxxx` |   其中xxxx为appld值，具体可抓包或者安卓使用下面的方法获得|
-| `liulactive@d@ff80808166c5ee6701676ce21fd14716` |   为流量包激活激活所需参数，中间d表示每天,w表示每周一,m代表每月第二天，ff80~4716为1g流量日包id值。比如左边参数代表为所有手机号每天激活一个1g流量日包|
-| `liulactive@d@ff80808166c5ee6701676ce21fd14716@13012341234-18812341234` |   代表仅为手机号13012341234和18812341234每天激活一个1g流量日包，其余手机号不执行流量包激活|
+| `liulactive@d@ff80808166c5ee6701676ce21fd14716` |   为零钱账户流量包激活激活所需参数，其中d表示每天,w表示每周一,m代表每月第一、二天，ff80~4716为1g流量日包id值。比如左边参数代表为所有手机号每天激活一个1g流量日包|
+| `liulactive@d@ff80808166c5ee6701676ce21fd14716@13012341234-18812341234` |   代表仅为号码13012341234和18812341234每天激活一个1g流量日包，其余手机号不执行流量包激活|
+| `liulactive@m@null@13012341234-18812341234@mygiftbag` |   为`我的礼包` 里面的流量包激活激活所需参数，必须填入手机号码。其中d表示每天,w表示每周一,m代表每月第一、二天。比如左边参数代表为号码13012341234和18812341234每月第一、二天激活一个 `我的礼包` 里面的1g流量日包|
+| `liulactive@w@ff80808166c5ee6701676ce21fd14716@13012341234-18812341234@mygiftbag` |   代表为手机号13012341234和18812341234每周一激活一个零钱账户1g流量日包以及 `我的礼包` 里面的1g流量日包，其余手机号不执行流量包激活|
 | `token@*** chat_id@***` |   为telegram bot通知所需参数，无则不进行信息通知|
-| `tgsimple` |   为tg bot简洁通知所需参数，无则为详细信息通知|
+| `sckey@************` |   为serverchan旧版通知所需参数，无则不进行信息通知|
+| `bark@************` |   为bark通知所需参数，无则不进行信息通知|
+| `sendsimple` |   为简洁通知所需参数，无则为详细信息通知|
 
-##### 各流量包id具体值：
+##### 各流量包id具体值：  
 | 流量包名 |  id值  |
 | -------- | ----- |
 | 1GB日包 |   `ff80808166c5ee6701676ce21fd14716`|
@@ -38,20 +42,22 @@
 | 1GB全国流量月包 |   `ff80808165afd2960165cdbc92470bef`|
 
 ##### appld值获取：
-`247b001385de5cc6ce11731ba1b15835313d489d604e58280e455a6c91e5058651acfb0f0b77029c2372659c319e02645b54c0acc367e692ab24a546b83c302d`为联通app抓包的appd值  <不保证这个appid能用，所以最好自己抓包，如果运行登录失败大概率就是appid不对或者失效>  
+`247b001385de5cc6ce11731ba1b15835313d489d604e58280e455a6c91e5058651acfb0f0b77029c2372659c319e02645b54c0acc367e692ab24a546b83c302d`为联通app抓包的appid值  <不保证这个appid能用，所以最好自己抓包，如果运行登录失败大概率就是appid不对或者失效>  
 以下获取appid方法由群友提供：安卓不会抓包的就去手机文件管理器，目录路径为 `Unicom/appid` ，打开复制就行了。  
 
 **填入参数举例**：  
-`githubaction membercenter niujieactive 号码1@密码1 号码2@密码2 号码3@密码3 appId@xxxx` 代表号码1、2和3进行正常签到  
-`githubaction membercenter niujieactive 号码1@密码1 号码2@密码2 号码3@密码3 appId@xxxx liulactive@d@xxxx` 代表号码1、2和3进行正常签到且每天为所有号码激活id值为xxxx的流量包  
-`githubaction membercenter niujieactive 号码1@密码1 号码2@密码2 号码3@密码3 appId@xxxx liulactive@w@xxxx@号码1-号码2` 代表号码1、2和3进行正常签到且每周一仅为号码1和2激活id值为xxxx的流量包  
-`githubaction 号码1@密码1 号码2@密码2 号码3@密码3 appId@xxxx liulactive@m@xxxx` 代表每月2号为所有号码激活id值为xxxx的流量包，不进行签到活动  
-
+`githubaction membercenter 号码1@密码1 号码2@密码2 号码3@密码3 appId@xxxx` 代表号码1、2和3进行正常签到  
+`githubaction membercenter 号码1@密码1 号码2@密码2 号码3@密码3 appId@xxxx liulactive@d@xxxx` 代表号码1、2和3进行正常签到且每天为所有号码激活id值为xxxx的流量包  
+`githubaction membercenter 号码1@密码1 号码2@密码2 号码3@密码3 appId@xxxx liulactive@w@xxxx@号码1-号码2` 代表号码1、2和3进行正常签到且每周一仅为号码1和2激活id值为xxxx的流量包  
+`githubaction membercenter 号码1@密码1 号码2@密码2 号码3@密码3 appId@xxxx liulactive@d@null@号码1-号码2@mygiftbag` 代表号码1、2和3进行正常签到且每天仅为号码1和2激活一个我的礼包里面的1g流量日包  
+`githubaction 号码1@密码1 号码2@密码2 号码3@密码3 appId@xxxx liulactive@m@xxxx` 代表每月1、2号为所有号码激活id值为xxxx的流量包，不进行签到活动  
+`githubaction 号码1@密码1 号码2@密码2 号码3@密码3 appId@xxxx liulactive@m@null@号码1-号码2@mygiftbag` 代表每月1、2号为所有号码激活一个我的礼包里面的1g流量日包，不进行签到活动  
+**可多次传入不同liulactive参数为不同号码激活不同流量包**  
 运行开始时间也可以自己修改`.github/workflows/签到.yml`文件中`- cron: 05 23 * * *`，你想运行的北京时间减8就行了。05代表5分，23代表23时，就是0时区23：05的意思。
 
 触发运行方式：  
 双击右上角自己仓库Star触发；  
-请随便找个文件(例如`README.md`)，加个空格提交一下，否则可能会出现无法定时执行的问题  
+Actions栏手动运行；  
 由于规则更新,可能会Fork后会默认禁用,请手动点击Actions 选择项目 `enable workflows`激活  
 
 ### 3.同步Fork后的代码
